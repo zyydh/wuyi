@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<persistence version="2.1" xmlns="http://xmlns.jcp.org/xml/ns/persistence" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/persistence http://xmlns.jcp.org/xml/ns/persistence/persistence_2_1.xsd">
+	<persistence-unit name="wuyi">
+	<class>org.wuyi.entity.Admin</class>
+	<class>org.wuyi.entity.Attachment</class>
+	<class>org.wuyi.entity.Classes</class>
+	<class>org.wuyi.entity.Job</class>
+	<class>org.wuyi.entity.LoanFood</class>
+	<class>org.wuyi.entity.LoanHbl</class>
+	<class>org.wuyi.entity.LoanSd</class>
+	<class>org.wuyi.entity.LoanStudent</class>
+	<class>org.wuyi.entity.LoanTssh</class>
+	<class>org.wuyi.entity.LoanYjsh</class>
+	<class>org.wuyi.entity.MedicalInsurance</class>
+	<class>org.wuyi.entity.Student</class>
+	<class>org.wuyi.entity.StudentEvents</class>
+	<class>org.wuyi.entity.Teacher</class>
+	<class>org.wuyi.entity.Template</class>
+	<class>org.wuyi.entity.User</class>
+	<class>org.wuyi.entity.WorkFlow</class>
+	<class>org.wuyi.entity.WorkFlowItem</class>
+
+	
+	</persistence-unit>
+</persistence>

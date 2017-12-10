@@ -1,0 +1,437 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<report xmlns="http://www.eclipse.org/birt/2005/design" version="3.2.23" id="1">
+    <property name="createdBy">Eclipse BIRT Designer Version 4.6.0.v201606072122</property>
+    <property name="units">in</property>
+    <property name="iconFile">/templates/first_report.gif</property>
+    <property name="cheatSheet">org.eclipse.birt.report.designer.ui.cheatsheet.firstreport</property>
+    <property name="bidiLayoutOrientation">ltr</property>
+    <property name="imageDPI">96</property>
+    <data-sources>
+        <oda-data-source extensionID="org.eclipse.birt.report.data.oda.jdbc" name="wuyi" id="247">
+            <list-property name="privateDriverProperties">
+                <ex-property>
+                    <name>metadataBidiFormatStr</name>
+                    <value>ILYNN</value>
+                </ex-property>
+                <ex-property>
+                    <name>disabledMetadataBidiFormatStr</name>
+                </ex-property>
+                <ex-property>
+                    <name>contentBidiFormatStr</name>
+                    <value>ILYNN</value>
+                </ex-property>
+                <ex-property>
+                    <name>disabledContentBidiFormatStr</name>
+                </ex-property>
+            </list-property>
+            <property name="odaDriverClass">com.mysql.jdbc.Driver</property>
+            <property name="odaURL">jdbc:mysql://localhost:3306/wuyi?useUnicode=true&amp;amp;characterEncoding=utf-8</property>
+            <property name="odaUser">root</property>
+            <encrypted-property name="odaPassword" encryptionID="base64">MTIzNDU2</encrypted-property>
+            <property name="odaJndiName">wuyi</property>
+        </oda-data-source>
+    </data-sources>
+    <data-sets>
+        <oda-data-set extensionID="org.eclipse.birt.report.data.oda.jdbc.JdbcSelectDataSet" name="Student" id="248">
+            <list-property name="columnHints">
+                <structure>
+                    <property name="columnName">user_id</property>
+                    <text-property name="displayName">user_id</text-property>
+                    <text-property name="heading">user_id</text-property>
+                </structure>
+                <structure>
+                    <property name="columnName">cla_id</property>
+                    <text-property name="displayName">cla_id</text-property>
+                    <text-property name="heading">cla_id</text-property>
+                </structure>
+                <structure>
+                    <property name="columnName">std_from</property>
+                    <text-property name="displayName">std_from</text-property>
+                    <text-property name="heading">std_from</text-property>
+                </structure>
+                <structure>
+                    <property name="columnName">std_idcard</property>
+                    <text-property name="displayName">std_idcard</text-property>
+                    <text-property name="heading">std_idcard</text-property>
+                </structure>
+                <structure>
+                    <property name="columnName">std_grade</property>
+                    <text-property name="displayName">std_grade</text-property>
+                    <text-property name="heading">std_grade</text-property>
+                </structure>
+                <structure>
+                    <property name="columnName">std_school_year</property>
+                    <text-property name="displayName">std_school_year</text-property>
+                    <text-property name="heading">std_school_year</text-property>
+                </structure>
+            </list-property>
+            <structure name="cachedMetaData">
+                <list-property name="resultSet">
+                    <structure>
+                        <property name="position">1</property>
+                        <property name="name">user_id</property>
+                        <property name="dataType">string</property>
+                    </structure>
+                    <structure>
+                        <property name="position">2</property>
+                        <property name="name">cla_id</property>
+                        <property name="dataType">string</property>
+                    </structure>
+                    <structure>
+                        <property name="position">3</property>
+                        <property name="name">std_from</property>
+                        <property name="dataType">string</property>
+                    </structure>
+                    <structure>
+                        <property name="position">4</property>
+                        <property name="name">std_idcard</property>
+                        <property name="dataType">string</property>
+                    </structure>
+                    <structure>
+                        <property name="position">5</property>
+                        <property name="name">std_grade</property>
+                        <property name="dataType">string</property>
+                    </structure>
+                    <structure>
+                        <property name="position">6</property>
+                        <property name="name">std_school_year</property>
+                        <property name="dataType">string</property>
+                    </structure>
+                </list-property>
+            </structure>
+            <property name="dataSource">wuyi</property>
+            <list-property name="resultSet">
+                <structure>
+                    <property name="position">1</property>
+                    <property name="name">user_id</property>
+                    <property name="nativeName">user_id</property>
+                    <property name="dataType">string</property>
+                    <property name="nativeDataType">12</property>
+                </structure>
+                <structure>
+                    <property name="position">2</property>
+                    <property name="name">cla_id</property>
+                    <property name="nativeName">cla_id</property>
+                    <property name="dataType">string</property>
+                    <property name="nativeDataType">12</property>
+                </structure>
+                <structure>
+                    <property name="position">3</property>
+                    <property name="name">std_from</property>
+                    <property name="nativeName">std_from</property>
+                    <property name="dataType">string</property>
+                    <property name="nativeDataType">12</property>
+                </structure>
+                <structure>
+                    <property name="position">4</property>
+                    <property name="name">std_idcard</property>
+                    <property name="nativeName">std_idcard</property>
+                    <property name="dataType">string</property>
+                    <property name="nativeDataType">12</property>
+                </structure>
+                <structure>
+                    <property name="position">5</property>
+                    <property name="name">std_grade</property>
+                    <property name="nativeName">std_grade</property>
+                    <property name="dataType">string</property>
+                    <property name="nativeDataType">12</property>
+                </structure>
+                <structure>
+                    <property name="position">6</property>
+                    <property name="name">std_school_year</property>
+                    <property name="nativeName">std_school_year</property>
+                    <property name="dataType">string</property>
+                    <property name="nativeDataType">12</property>
+                </structure>
+            </list-property>
+            <xml-property name="queryText"><![CDATA[select * from student]]></xml-property>
+            <xml-property name="designerValues"><![CDATA[<?xml version="1.0" encoding="UTF-8"?>
+<model:DesignValues xmlns:design="http://www.eclipse.org/datatools/connectivity/oda/design" xmlns:model="http://www.eclipse.org/birt/report/model/adapter/odaModel">
+  <Version>2.0</Version>
+  <design:ResultSets derivedMetaData="true">
+    <design:resultSetDefinitions>
+      <design:resultSetColumns>
+        <design:resultColumnDefinitions>
+          <design:attributes>
+            <design:identifier>
+              <design:name>user_id</design:name>
+              <design:position>1</design:position>
+            </design:identifier>
+            <design:nativeDataTypeCode>12</design:nativeDataTypeCode>
+            <design:precision>45</design:precision>
+            <design:scale>0</design:scale>
+            <design:nullability>NotNullable</design:nullability>
+            <design:uiHints>
+              <design:displayName>user_id</design:displayName>
+            </design:uiHints>
+          </design:attributes>
+          <design:usageHints>
+            <design:label>user_id</design:label>
+            <design:formattingHints>
+              <design:displaySize>45</design:displaySize>
+            </design:formattingHints>
+          </design:usageHints>
+        </design:resultColumnDefinitions>
+        <design:resultColumnDefinitions>
+          <design:attributes>
+            <design:identifier>
+              <design:name>cla_id</design:name>
+              <design:position>2</design:position>
+            </design:identifier>
+            <design:nativeDataTypeCode>12</design:nativeDataTypeCode>
+            <design:precision>45</design:precision>
+            <design:scale>0</design:scale>
+            <design:nullability>Nullable</design:nullability>
+            <design:uiHints>
+              <design:displayName>cla_id</design:displayName>
+            </design:uiHints>
+          </design:attributes>
+          <design:usageHints>
+            <design:label>cla_id</design:label>
+            <design:formattingHints>
+              <design:displaySize>45</design:displaySize>
+            </design:formattingHints>
+          </design:usageHints>
+        </design:resultColumnDefinitions>
+        <design:resultColumnDefinitions>
+          <design:attributes>
+            <design:identifier>
+              <design:name>std_from</design:name>
+              <design:position>3</design:position>
+            </design:identifier>
+            <design:nativeDataTypeCode>12</design:nativeDataTypeCode>
+            <design:precision>45</design:precision>
+            <design:scale>0</design:scale>
+            <design:nullability>Nullable</design:nullability>
+            <design:uiHints>
+              <design:displayName>std_from</design:displayName>
+            </design:uiHints>
+          </design:attributes>
+          <design:usageHints>
+            <design:label>std_from</design:label>
+            <design:formattingHints>
+              <design:displaySize>45</design:displaySize>
+            </design:formattingHints>
+          </design:usageHints>
+        </design:resultColumnDefinitions>
+        <design:resultColumnDefinitions>
+          <design:attributes>
+            <design:identifier>
+              <design:name>std_idcard</design:name>
+              <design:position>4</design:position>
+            </design:identifier>
+            <design:nativeDataTypeCode>12</design:nativeDataTypeCode>
+            <design:precision>45</design:precision>
+            <design:scale>0</design:scale>
+            <design:nullability>Nullable</design:nullability>
+            <design:uiHints>
+              <design:displayName>std_idcard</design:displayName>
+            </design:uiHints>
+          </design:attributes>
+          <design:usageHints>
+            <design:label>std_idcard</design:label>
+            <design:formattingHints>
+              <design:displaySize>45</design:displaySize>
+            </design:formattingHints>
+          </design:usageHints>
+        </design:resultColumnDefinitions>
+        <design:resultColumnDefinitions>
+          <design:attributes>
+            <design:identifier>
+              <design:name>std_grade</design:name>
+              <design:position>5</design:position>
+            </design:identifier>
+            <design:nativeDataTypeCode>12</design:nativeDataTypeCode>
+            <design:precision>45</design:precision>
+            <design:scale>0</design:scale>
+            <design:nullability>Nullable</design:nullability>
+            <design:uiHints>
+              <design:displayName>std_grade</design:displayName>
+            </design:uiHints>
+          </design:attributes>
+          <design:usageHints>
+            <design:label>std_grade</design:label>
+            <design:formattingHints>
+              <design:displaySize>45</design:displaySize>
+            </design:formattingHints>
+          </design:usageHints>
+        </design:resultColumnDefinitions>
+        <design:resultColumnDefinitions>
+          <design:attributes>
+            <design:identifier>
+              <design:name>std_school_year</design:name>
+              <design:position>6</design:position>
+            </design:identifier>
+            <design:nativeDataTypeCode>12</design:nativeDataTypeCode>
+            <design:precision>45</design:precision>
+            <design:scale>0</design:scale>
+            <design:nullability>Nullable</design:nullability>
+            <design:uiHints>
+              <design:displayName>std_school_year</design:displayName>
+            </design:uiHints>
+          </design:attributes>
+          <design:usageHints>
+            <design:label>std_school_year</design:label>
+            <design:formattingHints>
+              <design:displaySize>45</design:displaySize>
+            </design:formattingHints>
+          </design:usageHints>
+        </design:resultColumnDefinitions>
+      </design:resultSetColumns>
+      <design:criteria/>
+    </design:resultSetDefinitions>
+  </design:ResultSets>
+</model:DesignValues>]]></xml-property>
+        </oda-data-set>
+    </data-sets>
+    <styles>
+        <style name="report" id="110">
+            <property name="fontFamily">sans-serif</property>
+            <property name="fontSize">10pt</property>
+        </style>
+    </styles>
+    <page-setup>
+        <simple-master-page name="Simple MasterPage" id="2">
+            <page-footer>
+                <text id="3">
+                    <property name="contentType">html</property>
+                    <text-property name="content"><![CDATA[<value-of>new Date()</value-of>]]></text-property>
+                </text>
+            </page-footer>
+        </simple-master-page>
+    </page-setup>
+    <body>
+        <label id="245">
+            <property name="fontFamily">sans-serif</property>
+            <property name="fontSize">x-large</property>
+            <property name="fontWeight">bold</property>
+            <property name="textAlign">center</property>
+            <text-property name="text">学生信息</text-property>
+        </label>
+        <table id="249">
+            <property name="dataSet">Student</property>
+            <list-property name="boundDataColumns">
+                <structure>
+                    <property name="name">user_id</property>
+                    <text-property name="displayName">user_id</text-property>
+                    <expression name="expression" type="javascript">dataSetRow["user_id"]</expression>
+                    <property name="dataType">string</property>
+                </structure>
+                <structure>
+                    <property name="name">cla_id</property>
+                    <text-property name="displayName">cla_id</text-property>
+                    <expression name="expression" type="javascript">dataSetRow["cla_id"]</expression>
+                    <property name="dataType">string</property>
+                </structure>
+                <structure>
+                    <property name="name">std_from</property>
+                    <text-property name="displayName">std_from</text-property>
+                    <expression name="expression" type="javascript">dataSetRow["std_from"]</expression>
+                    <property name="dataType">string</property>
+                </structure>
+                <structure>
+                    <property name="name">std_idcard</property>
+                    <text-property name="displayName">std_idcard</text-property>
+                    <expression name="expression" type="javascript">dataSetRow["std_idcard"]</expression>
+                    <property name="dataType">string</property>
+                </structure>
+                <structure>
+                    <property name="name">std_grade</property>
+                    <text-property name="displayName">std_grade</text-property>
+                    <expression name="expression" type="javascript">dataSetRow["std_grade"]</expression>
+                    <property name="dataType">string</property>
+                </structure>
+                <structure>
+                    <property name="name">std_school_year</property>
+                    <text-property name="displayName">std_school_year</text-property>
+                    <expression name="expression" type="javascript">dataSetRow["std_school_year"]</expression>
+                    <property name="dataType">string</property>
+                </structure>
+            </list-property>
+            <column id="283"/>
+            <column id="284"/>
+            <column id="285"/>
+            <column id="286"/>
+            <column id="287"/>
+            <column id="288"/>
+            <header>
+                <row id="250">
+                    <cell id="251">
+                        <label id="252">
+                            <text-property name="text">学号</text-property>
+                        </label>
+                    </cell>
+                    <cell id="253">
+                        <label id="254">
+                            <text-property name="text">班级</text-property>
+                        </label>
+                    </cell>
+                    <cell id="255">
+                        <label id="256">
+                            <text-property name="text">生源地</text-property>
+                        </label>
+                    </cell>
+                    <cell id="257">
+                        <label id="258">
+                            <text-property name="text">身份证号码</text-property>
+                        </label>
+                    </cell>
+                    <cell id="259">
+                        <label id="260">
+                            <text-property name="text">年级</text-property>
+                        </label>
+                    </cell>
+                    <cell id="261">
+                        <label id="262">
+                            <text-property name="text">学年度</text-property>
+                        </label>
+                    </cell>
+                </row>
+            </header>
+            <detail>
+                <row id="263">
+                    <cell id="264">
+                        <data id="265">
+                            <property name="resultSetColumn">user_id</property>
+                        </data>
+                    </cell>
+                    <cell id="266">
+                        <data id="267">
+                            <property name="resultSetColumn">cla_id</property>
+                        </data>
+                    </cell>
+                    <cell id="268">
+                        <data id="269">
+                            <property name="resultSetColumn">std_from</property>
+                        </data>
+                    </cell>
+                    <cell id="270">
+                        <data id="271">
+                            <property name="resultSetColumn">std_idcard</property>
+                        </data>
+                    </cell>
+                    <cell id="272">
+                        <data id="273">
+                            <property name="resultSetColumn">std_grade</property>
+                        </data>
+                    </cell>
+                    <cell id="274">
+                        <data id="275">
+                            <property name="resultSetColumn">std_school_year</property>
+                        </data>
+                    </cell>
+                </row>
+            </detail>
+            <footer>
+                <row id="276">
+                    <cell id="277"/>
+                    <cell id="278"/>
+                    <cell id="279"/>
+                    <cell id="280"/>
+                    <cell id="281"/>
+                    <cell id="282"/>
+                </row>
+            </footer>
+        </table>
+    </body>
+</report>

@@ -1,0 +1,129 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:jdbc="http://www.springframework.org/schema/jdbc" xmlns:jee="http://www.springframework.org/schema/jee"
+	xmlns:tx="http://www.springframework.org/schema/tx" xmlns:jpa="http://www.springframework.org/schema/data/jpa"
+    xmlns:mvc="http://www.springframework.org/schema/mvc" xmlns:util="http://www.springframework.org/schema/util" 
+    xmlns:aop="http://www.springframework.org/schema/aop"
+	xsi:schemaLocation="
+		http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-4.0.xsd
+		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.0.xsd
+		http://www.springframework.org/schema/jdbc http://www.springframework.org/schema/jdbc/spring-jdbc-4.0.xsd
+		http://www.springframework.org/schema/jee http://www.springframework.org/schema/jee/spring-jee-4.0.xsd
+		http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-4.0.xsd
+		http://www.springframework.org/schema/data/jpa http://www.springframework.org/schema/data/jpa/spring-jpa.xsd
+		http://www.springframework.org/schema/mvc http://www.springframework.org/schema/mvc/spring-mvc-4.0.xsd  
+        http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-4.0.xsd  
+        http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.0.xsd
+        http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util.xsd
+        http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-3.1.xsd"
+        
+	default-lazy-init="true">
+	
+	
+	<!-- JPA实体管理工厂的配置 -->
+	<bean id="entityManagerFactory"
+		class="org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean">
+		<property name="dataSource" ref="dataSource" />
+		<property name="jpaVendorAdapter" ref="hibernateJpaVendorAdapter" />
+		<property name="packagesToScan" value="org.wuyi.entity" />
+		<property name="jpaProperties">
+			<props>
+				<prop key="hibernate.ejb.naming_strategy">org.hibernate.cfg.ImprovedNamingStrategy</prop>
+				<prop key="hibernate.show_sql">true</prop>
+			</props>
+		</property>
+	</bean>
+
+	<!--指定实现JPA的适配器 -->
+	<bean id="hibernateJpaVendorAdapter"
+		class="org.springframework.orm.jpa.vendor.HibernateJpaVendorAdapter">
+		<property name="databasePlatform" value="org.hibernate.dialect.SQLServerDialect" />
+	</bean>
+
+	<!-- Jpa 事务配置 -->
+	<bean id="transactionManager" class="org.springframework.orm.jpa.JpaTransactionManager">
+		<property name="entityManagerFactory" ref="entityManagerFactory" />
+	</bean>
+
+	<!-- 使用annotation定义事务 -->
+	<tx:annotation-driven transaction-manager="transactionManager"
+		proxy-target-class="true" />
+
+
+	<!-- 数据源配置, 使用DBCP数据库连接池 -->
+	<bean id="dataSource" class="org.apache.commons.dbcp2.BasicDataSource"
+		destroy-method="close">
+		<!-- Connection Info -->
+		<property name="driverClassName" value="com.mysql.jdbc.Driver" />
+		<property name="url" value="jdbc:mysql://localhost:3306/wuyi4?useUnicode=true&amp;characterEncoding=utf-8" />
+		<property name="username" value="root" />
+		<property name="password" value="517828" />
+
+		<!-- Connection Pooling Info -->
+		<property name="maxTotal" value="200" />
+		<property name="maxIdle" value="10" />
+		<property name="defaultAutoCommit" value="false" />
+		<!-- 连接Idle一个小时后超时 -->
+		<property name="timeBetweenEvictionRunsMillis" value="3600000" />
+		<property name="minEvictableIdleTimeMillis" value="3600000" />
+	</bean>
+
+	<mvc:annotation-driven>
+		<!-- 消息转换器 -->
+		<mvc:message-converters register-defaults="true">
+			<bean class="org.springframework.http.converter.StringHttpMessageConverter">
+				<property name="supportedMediaTypes" value="text/html;charset=UTF-8" />
+			</bean>
+		</mvc:message-converters>
+	</mvc:annotation-driven>
+
+	<!-- Spring MVC配置 -->
+    <context:annotation-config />
+    <!-- 对包中的所有类进行扫描，以完成Bean创建和自动依赖注入的功能-->
+    <context:component-scan base-package="org.wuyi" />
+    <!--默认的mvc注解映射的支持 -->
+    <mvc:annotation-driven/>
+    <!-- 激活自动代理功能 -->
+	<aop:aspectj-autoproxy proxy-target-class="true"/>
+	
+    <bean class="org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping" />  
+
+	<bean id="mappingJacksonHttpMessageConverter" class="org.springframework.http.converter.json.MappingJacksonHttpMessageConverter">  
+        <property name="supportedMediaTypes">  
+            <list>  
+                <value>text/html;charset=UTF-8</value>  
+            </list>  
+        </property>  
+    </bean>  
+    
+	<!-- ViewResolver -->      
+	<bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
+    	<property name="prefix" value="/"/>      
+    	<property name="suffix" value=".jsp"/>
+	</bean>
+	
+	<aop:aspectj-autoproxy proxy-target-class="true">
+        <aop:include name="securityValidAspect" />
+    </aop:aspectj-autoproxy>
+    <bean id="securityValidAspect" class="org.wuyi.security.SecurityValidAspect" />
+    
+    <!-- 统一异常处理 -->
+	<bean id="exceptionHandler" class="org.wuyi.exception.MyExceptionResolver" />
+	<bean id="multipartResolver"
+		class="org.springframework.web.multipart.commons.CommonsMultipartResolver">
+		<property name="maxUploadSize" value="209715200" />
+		<property name="defaultEncoding" value="UTF-8" />
+		<property name="resolveLazily" value="true" />
+	</bean>
+	
+	<!-- 对静态资源文件的访问 -->
+	<mvc:resources mapping="/assets/**" location="/assets/" cache-period="31556926" />
+    <mvc:resources mapping="/*.html" location="/" cache-period="31556926" />
+    <mvc:resources mapping="/*.jsp" location="/" cache-period="31556926" />
+    <mvc:resources mapping="/*.ico" location="/" cache-period="31556926" />
+    <mvc:resources mapping="/*.exe" location="/" cache-period="31556926" />
+    <mvc:resources mapping="/*.rptdesign" location="/" cache-period="31556926" />
+    <mvc:resources mapping="/webcontent/**" location="/webcontent/" cache-period="31556926" />
+    
+</beans>
